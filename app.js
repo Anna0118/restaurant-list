@@ -53,32 +53,28 @@ app.get("/restaurants/:id", (req, res) => {
     .catch((error) => console.error(error));
 });
 
-// // route setting for show another page
-// app.get("/restaurants/:restaurant_id", (req, res) => {
-//   const restaurant = restList.results.find(
-//     (restaurant) => restaurant.id.toString() === req.params.restaurant_id
-//   );
-//   res.render("show", { restaurant: restaurant });
-// });
+// query string
+// 透過req.query 可得網頁?後的東西
+app.get("/search", (req, res) => {
+  // 如果沒有輸入關鍵字, 返回原始畫面
+  if (!req.query.keyword) {
+    return res.redirect("/");
+  }
 
-// // query string
-// // 透過req.query 可得網頁?後的東西
-// // 設定對應的路由器
-// app.get("/search", (req, res) => {
-//   // 如果沒有輸入關鍵字, 返回原始畫面
-//   if (!req.query.keyword) {
-//     return res.redirect("/");
-//   }
-//   //   const keywords = req.query.keywords;
-//   const keyword = req.query.keyword.trim().toLowerCase();
+  const keyword = req.query.keyword; // 原始search input
+  const keywords = req.query.keyword.trim().toLowerCase();
 
-//   const restaurants = restList.results.filter(
-//     (data) =>
-//       data.name.toLowerCase().includes(keyword) ||
-//       data.category.includes(keyword)
-//   );
-//   res.render("index", { restaurants: restaurants, keyword: keyword });
-// });
+  Restaurant.find()
+    .lean()
+    .then((restaurant) => {
+      const filter = restaurant.filter(
+        (data) =>
+          data.name.toLowerCase().includes(keywords) ||
+          data.category.includes(keywords)
+      );
+      res.render("index", { restaurants: filter, keyword });
+    });
+});
 
 // start and listen on the Express server
 app.listen(port, () => {
