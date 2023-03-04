@@ -44,11 +44,14 @@ app.get("/", (req, res) => {
     .catch((error) => console.error(error));
 });
 
-// // show detail page
-// app.get('/',(req,res)=>{
-
-// })
-
+// show detail page
+app.get("/restaurants/:id", (req, res) => {
+  const id = req.params.id;
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render("show", { restaurant }))
+    .catch((error) => console.error(error));
+});
 
 // // route setting for show another page
 // app.get("/restaurants/:restaurant_id", (req, res) => {
