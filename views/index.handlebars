@@ -23,13 +23,13 @@
 <div class="container search-bar">
   <div class="search-bar-outer">
     <div class="search-bar-inner">
-        {{!-- 讓表單從路由/search的位置發送, 與路由設定要一樣 --}}
+      {{! 讓表單從路由/search的位置發送, 與路由設定要一樣 }}
       <form action="/search">
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
           <input
             type="text"
-            {{!-- 將name從原本ｑ改成keyword --}}
+            {{! 將name從原本ｑ改成keyword }}
             name="keyword"
             class="form-control"
             placeholder="輸入餐廳、分類"
@@ -60,7 +60,7 @@
               <img
                 class="card-img-top"
                 src="{{this.image}}"
-                alt="Sababa 沙巴巴中東美食"
+                alt="{{this.name}}"
               />
               <div class="card-body p-3">
                 <h6 class="card-title mb-1">{{this.name}}</h6>

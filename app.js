@@ -23,7 +23,6 @@ db.once("open", () => {
   console.log("mongodb connected!");
 });
 
-
 // //透過路徑檔, 將需要用到的資料require近來
 // const restList = require("./restaurant.json");
 const app = express();
@@ -37,12 +36,19 @@ app.set("view engine", "handlebars"); // 告訴 Express 說要設定的 view eng
 app.use(express.static("public")); // 告訴 Express 靜態檔案是放在名為 public 的資料夾中
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// route setting
+app.get("/", (req, res) => {
+  Restaurant.find()
+    .lean()
+    .then((restaurants) => res.render("index", { restaurants }))
+    .catch((error) => console.error(error));
+});
 
-// // routes setting
-// app.get("/", (req, res) => {
-//   // past the movie data into 'index' partial template
-//   res.render("index", { restaurants: restList.results });
-// });
+// // show detail page
+// app.get('/',(req,res)=>{
+
+// })
+
 
 // // route setting for show another page
 // app.get("/restaurants/:restaurant_id", (req, res) => {
