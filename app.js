@@ -13,6 +13,7 @@ if (process.env.NODE_ENV !== "production") {
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 }); // 設定連線到 mongoDB
 
 const db = mongoose.connection; // 用on註冊監聽器，監聽error事件有沒有發生,只要觸error就印出error訊息
@@ -93,6 +94,18 @@ app.put("/restaurants/:id", (req, res) => {
   Restaurant.findByIdAndUpdate(id, req.body)
     .then(() => res.redirect(`/restaurants/${id}`))
     .catch((error) => console.log(error));
+});
+
+// create page
+app.get("/restaurant/new", (req, res) => {
+  res.render("new");
+});
+
+// 新增餐廳
+app.post("/restaurants", (req, res) => {
+  Restaurant.create(req.body)
+    .then(() => res.redirect("/"))
+    .catch((err) => console.log(err));
 });
 
 // delete the restaurant
