@@ -76,6 +76,15 @@ app.get("/search", (req, res) => {
     });
 });
 
+// show edit page
+app.get("/restaurants/:id/edit", (req, res) => {
+  const id = req.params.id;
+  Restaurant.findById(id)
+    .lean()
+    .then((restaurants) => res.render("edit", { restaurants }))
+    .catch((error) => console.error(error));
+});
+
 // start and listen on the Express server
 app.listen(port, () => {
   console.log(`Express is listening on localhost:${port}`);

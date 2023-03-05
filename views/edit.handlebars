@@ -1,0 +1,172 @@
+<div class="container py-5">
+
+  <div class="row">
+    <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Edit Restaurant
+            <i class="fas fa-edit"></i></h5>
+          <hr />
+          <form method="POST" action="/restaurants/{{restaurants._id}}/edit">
+            <div class="row mb-3 g-2">
+              <label for="name" class="col-md-4 col-form-label">
+                店名
+              </label>
+              <div class="col-md-8">
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  id="name"
+                  value="{{restaurants.name}}"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row mb-3 g-2">
+              <label for="name_en" class="col-md-4 col-form-label">
+                英文店名
+              </label>
+              <div class="col-md-8">
+                <input
+                  type="text"
+                  name="name_en"
+                  class="form-control"
+                  id="name_en"
+                  value="{{restaurants.name_en}}"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row mb-3 g-2">
+              <label for="category" class="col-md-4 col-form-label">
+                類別
+              </label>
+              <div class="col-md-8">
+                <input
+                  type="text"
+                  name="category"
+                  class="form-control"
+                  id="category"
+                  value="{{restaurants.category}}"
+                  required
+                  list="categoryOptions"
+                  {{!需加入datalist屬性}}
+                />
+                {{! 使用datalist，當使用者在輸入框中輸入時，會顯示與輸入匹配的選項}}
+                <datalist id="categoryOptions">
+                  <option>美式</option>
+                  <option>咖啡</option>
+                  <option>中東料理</option>
+                  <option>日本料理</option>
+                  <option>義式餐廳</option>
+                </datalist>
+              </div>
+            </div>
+            <div class="row mb-3 g-2">
+              <label for="image" class="col-md-4 col-form-label">
+                圖片連結
+              </label>
+              <div class="col-md-8">
+                <input
+                  type="url"
+                  name="image"
+                  class="form-control"
+                  id="image"
+                  value="{{restaurants.image}}"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row mb-3 g-2">
+              <label for="location" class="col-md-4 col-form-label">
+                地址
+              </label>
+              <div class="col-md-8">
+                <input
+                  type="text"
+                  name="location"
+                  class="form-control"
+                  id="location"
+                  value="{{restaurants.location}}"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row mb-3 g-2">
+              <label for="phone" class="col-md-4 col-form-label">
+                電話
+              </label>
+              <div class="col-md-8">
+                <input
+                  type="tel"
+                  name="phone"
+                  class="form-control"
+                  id="phone"
+                  value="{{restaurants.phone}}"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row mb-3 g-2">
+              <label for="phone" class="col-md-4 col-form-label">
+                地圖連結
+              </label>
+              <div class="col-md-8">
+                <input
+                  type="url"
+                  name="google_map"
+                  class="form-control"
+                  id="google_map"
+                  value="{{restaurants.google_map}}"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row mb-3 g-2">
+              <label for="phone" class="col-md-4 col-form-label">
+                評分
+              </label>
+              <div class="col-md-8">
+                <input
+                  type="number"
+                  name="rating"
+                  class="form-control"
+                  id="rating"
+                  min="0.0"
+                  max="5.0"
+                  value="{{restaurants.rating}}"
+                  required
+                />
+              </div>
+            </div>
+            <div class="row mb-3 g-2">
+              <label for="phone" class="col-md-4 col-form-label">
+                描述
+              </label>
+              <div class="col-md-8">
+                <textarea
+                  {{!文字加大匡}}
+                  type="text"
+                  name="description"
+                  class="form-control"
+                  id="description"
+                  required
+                >{{restaurants.description}}</textarea>
+              </div>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-success" type="submit">儲存</button>
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+              >返回</button>
+              {{! 使用type="reset" 可以清除/還原輸入 }}
+              <button type="reset" class="btn btn-outline-danger">還原</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
