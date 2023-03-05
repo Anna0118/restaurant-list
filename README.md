@@ -24,28 +24,34 @@
 ### 使用方式
 
 1.將專案 clone 至本地端
+
 ```
 git clone https://github.com/HKMark/restaurant_list.git
 ```
 
 2.安裝 npm 套件
+
 ```
 npm install
 ```
 
 3.安裝 express 套件
+
 ```
 npm i express@4.16.4
 ```
 
 4.安裝 nodemon
+
 ```
 npm install -g nodemon
 ```
 
-5.安裝 handlebars
+5.安裝 相關 modules
+
 ```
 npm i express-handlebars@3.0.0
+npm i method-override
 ```
 
 6.啟動伺服器
