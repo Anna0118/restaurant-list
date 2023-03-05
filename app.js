@@ -4,6 +4,7 @@ const exphbs = require("express-handlebars"); // 告訴express, 要使用handleb
 const mongoose = require("mongoose"); // 載入mongoose
 const bodyParser = require("body-parser"); // 引用 body-parser
 const Restaurant = require("./models/Restaurant");
+const methodOverride = require("method-override"); //HTML表單中並沒有提供PUT方法，只有GET和POST
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -35,6 +36,7 @@ app.set("view engine", "handlebars"); // 告訴 Express 說要設定的 view eng
 // setting static files
 app.use(express.static("public")); // 告訴 Express 靜態檔案是放在名為 public 的資料夾中
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride("_method")); //使用中間件method-override來解析這個隱藏的_method欄位，並將請求方法覆蓋為PUT
 
 // route setting
 app.get("/", (req, res) => {
@@ -83,6 +85,14 @@ app.get("/restaurants/:id/edit", (req, res) => {
     .lean()
     .then((restaurants) => res.render("edit", { restaurants }))
     .catch((error) => console.error(error));
+});
+
+// save the edit page
+app.put("/restaurants/:id", (req, res) => {
+  const id = req.params.id;
+  Restaurant.findByIdAndUpdate(id, req.body)
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch((error) => console.log(error));
 });
 
 // start and listen on the Express server
