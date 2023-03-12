@@ -1,18 +1,7 @@
-const mongoose = require("mongoose");
 const Restaurant = require("../Restaurant"); // 載入 Restaurant model
+const db = require("../../config/mongoose");
+
 const restaurantList = require("../../restaurant.json").results;
-
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-});
-
-const db = mongoose.connection;
 
 db.on("error", () => {
   console.log("mongodb error!");
