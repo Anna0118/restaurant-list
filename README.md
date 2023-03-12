@@ -1,6 +1,6 @@
 ## 我的餐廳清單
 
-![](https://ibb.co/y4pYhWv)
+![image](https://github.com/Anna0118/restaurant-list/blob/main/public/demo.png)
 
 ### 介紹
 
