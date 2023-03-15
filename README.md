@@ -22,6 +22,7 @@
 - Express handlebars 3.0.0
 - Boostrap 5.1.3
 - Font-awesome 5.8.1
+- handlebars-helpers: 0.10.0
 
 ### 使用方式
 

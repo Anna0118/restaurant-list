@@ -3,6 +3,11 @@ const router = express.Router();
 
 const Restaurant = require("../../models/Restaurant");
 
+// create page
+router.get("/new", (req, res) => {
+  res.render("new");
+});
+
 // show detail page
 router.get("/:id", (req, res) => {
   const id = req.params.id;
@@ -19,11 +24,6 @@ router.get("/:id/edit", (req, res) => {
     .lean()
     .then((restaurants) => res.render("edit", { restaurants }))
     .catch((error) => console.error(error));
-});
-
-// create page
-router.get("/new", (req, res) => {
-  res.render("new");
 });
 
 // save the edit page

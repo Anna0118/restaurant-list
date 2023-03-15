@@ -3,6 +3,7 @@ const express = require("express");
 const exphbs = require("express-handlebars"); // 告訴express, 要使用handlebars, 來解析html
 const bodyParser = require("body-parser"); // 引用 body-parser
 const methodOverride = require("method-override"); //HTML表單中並沒有提供PUT方法，只有GET和POST
+const helpers = require("handlebars-helpers")();
 
 const routes = require("./routes");
 require("./config/mongoose");
@@ -10,7 +11,7 @@ require("./config/mongoose");
 // //透過路徑檔, 將需要用到的資料require近來
 // const restList = require("./restaurant.json");
 const app = express();
-const port = 3000;
+const port = 3001;
 
 // setting template engine
 // app.enging(參數1:要用的樣版引擎, 參數2: 使用這個引擎的相關設定)

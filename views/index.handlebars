@@ -56,11 +56,11 @@
             </button>
           </div>
           <select class="form-select" id="sort" name="sort" onchange="submit()">
-            <option value="none"{{#if sort.none}}selected{{/if}}>排序</option>
-            <option value="name-asc"{{#if sort.name-asc}}selected{{/if}}>A > Z</option>
-            <option value="name-desc"{{#if sort.name-desc}}selected{{/if}}>Z > A</option>
-            <option value="category"{{#if sort.category}}selected{{/if}}>類別</option>
-            <option value="rating" {{#if sort.rating}}selected{{/if}}> 評分</option>
+            <option value="none"{{#eq sort "none"}}selected{{/eq}}>排序</option>
+            <option value="name-asc"{{#is sort "name-asc"}}selected{{/is}}>A > Z</option>
+            <option value="name-desc"{{#eq sort "name-desc"}}selected{{/eq}}>Z > A</option>
+            <option value="category"{{#eq sort "category"}}selected{{/eq}}>類別</option>
+            <option value="rating" {{#eq sort "rating"}}selected{{/eq}}> 評分</option>
           </select>
         </div>
       </form>
