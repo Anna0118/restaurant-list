@@ -20,7 +20,8 @@ function mySort(sort) {
 
 // route setting
 router.get("/", (req, res) => {
-  Restaurant.find()
+  const userId = req.user._id; 
+  Restaurant.find({userId})
     .lean()
     // .sort(mySort(sort))
     .then((restaurants) => {
