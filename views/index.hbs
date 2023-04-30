@@ -57,7 +57,7 @@
           </div>
           <select class="form-select" id="sort" name="sort" onchange="submit()">
             <option value="none"{{#eq sort "none"}}selected{{/eq}}>排序</option>
-            <option value="name-asc"{{#is sort "name-asc"}}selected{{/is}}>A > Z</option>
+            <option value="name-asc"{{#eq sort "name-asc"}}selected{{/eq}}>A > Z</option>
             <option value="name-desc"{{#eq sort "name-desc"}}selected{{/eq}}>Z > A</option>
             <option value="category"{{#eq sort "category"}}selected{{/eq}}>類別</option>
             <option value="rating" {{#eq sort "rating"}}selected{{/eq}}> 評分</option>

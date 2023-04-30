@@ -9,9 +9,11 @@ router.get("/new", (req, res) => {
 });
 
 // show detail page
-router.get("/:id", (req, res) => {
+router.get("/:id", (req, res) => 
+{
+  const userId = req.user._id;
   const id = req.params.id;
-  return Restaurant.findById(id)
+  return Restaurant.findById(id, userId)
     .lean()
     .then((restaurant) => res.render("show", { restaurant }))
     .catch((error) => console.error(error));
@@ -19,8 +21,9 @@ router.get("/:id", (req, res) => {
 
 // show edit page
 router.get("/:id/edit", (req, res) => {
+  const userId = req.user._id;
   const id = req.params.id;
-  Restaurant.findById(id)
+  Restaurant.findById(id, userId)
     .lean()
     .then((restaurants) => res.render("edit", { restaurants }))
     .catch((error) => console.error(error));
@@ -28,23 +31,26 @@ router.get("/:id/edit", (req, res) => {
 
 // save the edit page
 router.put("/:id", (req, res) => {
+  const userId = req.user._id;
   const id = req.params.id;
-  Restaurant.findByIdAndUpdate(id, req.body)
-    .then(() => res.redirect(`/restaurants/${id}`))
+  Restaurant.findByIdAndUpdate(id, userId,req.body)
+    .then(() => res.redirect(`/restaurants/${_id}`))
     .catch((error) => console.log(error));
 });
 
 // create a restaurant
 router.post("/", (req, res) => {
-  Restaurant.create(req.body)
+  const userId = req.user._id;
+  Restaurant.create(userId,req.body)
     .then(() => res.redirect("/"))
     .catch((err) => console.log(err));
 });
 
 // delete the restaurant
 router.delete("/:id", (req, res) => {
+  const userId = req.user._id;
   const id = req.params.id;
-  Restaurant.findById(id)
+  Restaurant.findById(userId,id)
     .then((restaurant) => restaurant.remove())
     .then(() => res.redirect("/"))
     .catch((error) => console.log(error));
