@@ -7,7 +7,8 @@
 這是一個餐廳清單網站，可以瀏覽餐廳的資訊、關鍵字搜索餐廳和連結到餐廳地址
 
 #### 功能
-
+- 使用者可建立個人的餐廳
+- 支援 Facebook 登入
 - 瀏覽餐廳
 - 搜索餐廳
 - 查看詳細資訊
@@ -36,37 +37,27 @@ git clone https://github.com/HKMark/restaurant_list.git
 
 ```
 npm install
-```
-
-3.安裝 express 套件
 
 ```
-npm i express@4.16.4
-```
 
-4.安裝 nodemon
+3.設定env，可餐考.env.example
 
-```
-npm install -g nodemon
-```
-
-5.安裝 相關 modules
+4.產生種子資料
 
 ```
-npm i express-handlebars@3.0.0
-npm i method-override
-```
-
-6.啟動伺服器
+npm run seed
 
 ```
-nodemon app.js
+
+5.啟動伺服器
+```
+npm run dev
 ```
 
-7.若看見此行訊息則代表順利運行，代表啟動成功
+6.若看見此行訊息則代表順利運行，代表啟動成功
 
 ```
-Express is listening on localhost:3000
+App is running on http://localhost:3000
 ```
 
 8.你可以在瀏覽器輸入 http://localhost:3000 瀏覽內容
