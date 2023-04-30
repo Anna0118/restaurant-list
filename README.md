@@ -60,4 +60,4 @@ npm run dev
 App is running on http://localhost:3000
 ```
 
-8.你可以在瀏覽器輸入 http://localhost:3000 瀏覽內容
+7.你可以在瀏覽器輸入 http://localhost:3000 瀏覽內容
